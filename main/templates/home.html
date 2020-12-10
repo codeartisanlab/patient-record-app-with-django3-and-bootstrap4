@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+</head>
+<body>
+    <main class="container">
+        <h3 class="my-3">This is home page <a href="#" class="float-end btn btn-sm btn-success mt-2">Add Patient</a></h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>#</th>
+                <th>Visit Date</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Mobile No</th>
+                <th>Detail</th>
+                <th>Precautions</th>
+                <th>Action</th>
+            </tr>
+            {% if data %}
+                {% for patient in data %}
+                <tr>
+                    <td>{{patient.id}}</td>
+                    <td>{{patient.visit_date}}</td>
+                    <td>{{patient.full_name}}</td>
+                    <td>{{patient.email}}</td>
+                    <td>{{patient.mobile_no}}</td>
+                    <td>{{patient.detail}}</td>
+                    <td>{{patient.precout}}</td>
+                    <td>
+                        <a href="#" class="btn btn-info btm-sm">Modify</a>
+                        <a href="#" class="btn btn-danger btm-sm">Delete</a>
+                        <a href="#" class="btn btn-dark btm-sm">Remind</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+    </main>
+</body>
+</html>
