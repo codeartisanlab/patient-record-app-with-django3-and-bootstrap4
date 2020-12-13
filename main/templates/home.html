@@ -9,11 +9,12 @@
 </head>
 <body>
     <main class="container">
-        <h3 class="my-3">This is home page <a href="#" class="float-end btn btn-sm btn-success mt-2">Add Patient</a></h3>
+        <h3 class="my-3">Patient List <a href="/add-patient" class="float-end btn btn-sm btn-success mt-2">Add Patient</a></h3>
         <table class="table table-bordered">
             <tr>
                 <th>#</th>
                 <th>Visit Date</th>
+                <th>Next V. Date</th>
                 <th>Full Name</th>
                 <th>Email</th>
                 <th>Mobile No</th>
@@ -26,6 +27,7 @@
                 <tr>
                     <td>{{patient.id}}</td>
                     <td>{{patient.visit_date}}</td>
+                    <td>{{patient.next_visit_date}}</td>
                     <td>{{patient.full_name}}</td>
                     <td>{{patient.email}}</td>
                     <td>{{patient.mobile_no}}</td>

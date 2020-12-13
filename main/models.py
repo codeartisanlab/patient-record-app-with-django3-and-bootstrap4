@@ -8,7 +8,7 @@ class Patient(models.Model):
     detail=models.TextField()
     precout=models.TextField()
     visit_date=models.DateTimeField(auto_now_add=True)
-    next_visit_date=models.DateTimeField()
+    next_visit_date=models.CharField(max_length=100)
 
     def __str__(self):
         return self.full_name
