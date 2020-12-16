@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
 from .models import Patient
 from .forms import PatientForm
@@ -26,3 +26,8 @@ def updatePatient(request,id):
             messages.success(request,'Data has been updated.')
     form=PatientForm(instance=patient)
     return render(request,'update-patient.html',{'form':form})
+
+# Delete Data
+def deletePatient(request,id):
+    Patient.objects.filter(id=id).delete()
+    return redirect('/')
