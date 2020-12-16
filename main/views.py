@@ -1,4 +1,5 @@
 from django.shortcuts import render,HttpResponse,redirect
+from django.core.mail import send_mail
 from django.contrib import messages
 from .models import Patient
 from .forms import PatientForm
@@ -31,3 +32,15 @@ def updatePatient(request,id):
 def deletePatient(request,id):
     Patient.objects.filter(id=id).delete()
     return redirect('/')
+
+# Send Email
+def sendEmail(request,id):
+    patient=Patient.objects.get(id=id)
+    send_mail(
+        'Next Visit Notification',
+        'Your Next visit on '+str(patient.next_visit_date)+' '+str(patient.email),
+        'admin@example.com',
+        [patient.email],
+        fail_silently=False,
+    )
+    return redirect('home')
