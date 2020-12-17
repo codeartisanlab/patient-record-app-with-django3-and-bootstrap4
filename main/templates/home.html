@@ -10,6 +10,9 @@
 <body>
     <main class="container">
         <h3 class="my-3">Patient List <a href="/add-patient" class="float-end btn btn-sm btn-success mt-2">Add Patient</a></h3>
+        {% for msg in messages %}
+        <p class="text-success">{{msg}}</p>
+        {% endfor %}
         <table class="table table-bordered">
             <tr>
                 <th>#</th>
@@ -38,7 +41,7 @@
                         <a onclick="return confirm('Are you sure you want to delete this data?')" href="/delete-patient/{{patient.id}}" class="btn btn-danger btm-sm">Delete</a>
                         <form method="post" action="/send-email/{{patient.id}}">
                             {% csrf_token %}
-                            <input type="submit" class="btn btn-dark mt-2" value="Remind" />
+                            <input type="submit" class="btn btn-primary mt-2" value="Remind" />
                         </form>
                     </td>
                 </tr>

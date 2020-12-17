@@ -28,19 +28,20 @@ def updatePatient(request,id):
     form=PatientForm(instance=patient)
     return render(request,'update-patient.html',{'form':form})
 
-# Delete Data
+# Delete
 def deletePatient(request,id):
     Patient.objects.filter(id=id).delete()
     return redirect('/')
 
 # Send Email
 def sendEmail(request,id):
-    patient=Patient.objects.get(id=id)
+    patient=Patient.objects.get(id=id) 
     send_mail(
-        'Next Visit Notification',
-        'Your Next visit on '+str(patient.next_visit_date)+' '+str(patient.email),
+        'Next Visit Reminder',
+        'Your next visit is on '+ str(patient.next_visit_date),
         'admin@example.com',
         [patient.email],
         fail_silently=False,
     )
-    return redirect('home')
+    messages.success(request,'Mail has been sent.')
+    return redirect('/')
