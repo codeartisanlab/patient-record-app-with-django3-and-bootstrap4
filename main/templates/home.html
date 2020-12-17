@@ -9,6 +9,12 @@
 </head>
 <body>
     <main class="container">
+        <form class="my-4" action="/">
+            <div class="input-group mb-3">
+                <input type="text" name="q" class="form-control form-control-lg" placeholder="Search" />
+                <button class="btn btn-dark btn-lg" type="submit" id="button-addon2">Search</button>
+            </div>
+        </form>
         <h3 class="my-3">Patient List <a href="/add-patient" class="float-end btn btn-sm btn-success mt-2">Add Patient</a></h3>
         {% for msg in messages %}
         <p class="text-success">{{msg}}</p>

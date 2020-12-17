@@ -2,9 +2,13 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.core.mail import send_mail
 from django.contrib import messages
 from .models import Patient
+from django.db.models import Q
 from .forms import PatientForm
 def home(request):
     data=Patient.objects.all()
+    if 'q' in request.GET:
+        q=request.GET['q']
+        data=Patient.objects.filter(Q(full_name__icontains=q)|Q(mobile_no__icontains=q)|Q(email__icontains=q))
     return render(request,'home.html',{'data':data})
 
 # Add Patient
